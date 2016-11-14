@@ -54,13 +54,14 @@
     "zone.js": "^0.6.25",
     "typescript": "^2.0.3",
     "concurrently": "^2.0.0",
-    "core-js": "^2.4.0"
+    "core-js": "^2.4.0",
+    "rxjs": "5.0.0-beta.12",
+    "retyped-x2js-tsd-ambient": "0.0.0-0",
+    "zone.js": "^0.6.12"
   },
   "devDependencies": {
 
 
-    "rxjs": "5.0.0-beta.12",
-    "retyped-x2js-tsd-ambient": "0.0.0-0",
-    "zone.js": "^0.6.12"
+
   }
 }
