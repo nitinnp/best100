@@ -13,7 +13,7 @@
     "dev": "concurrently \"npm run tsc:w\" \"npm start\" ",
     "tsc": "tsc",
     "tsc:w": "tsc -w",
-    "start": "nodemon ./server/bin/www",
+    "start": "node ./server/bin/www",
     "typings": "typings"
   },
   "dependencies": {
@@ -30,7 +30,6 @@
     "@ng-bootstrap/ng-bootstrap": "^1.0.0-alpha.9",
     "@types/xml2js": "0.0.28",
     "amazon-product-api": "^0.4.2",
-    "apac": "^2.0.2",
     "body-parser": "~1.13.2",
     "bootstrap": "^3.3.7",
     "cookie-parser": "~1.3.5",
@@ -44,14 +43,15 @@
     "jquery": "3.0.0",
     "mdbootstrap": "^4.1.1",
     "ng2-tooltip": "0.0.5",
+    "nodemon": "^1.11.0",
     "reflect-metadata": "0.1.2",
     "serve-favicon": "^2.3.0",
     "systemjs": "0.19.27",
+    "typings": "^1.4.0",
     "x2js": "^3.0.1",
     "xml": "^1.0.1",
     "xml2js": "^0.4.17",
-    "zone.js": "^0.6.25",
-    "typings": "^1.4.0"
+    "zone.js": "^0.6.25"
   },
   "devDependencies": {
     "concurrently": "^2.0.0",
