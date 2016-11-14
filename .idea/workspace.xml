@@ -46,8 +46,8 @@
       <file leaf-file-name="package.json" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/package.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1400">
-              <caret line="56" column="23" selection-start-line="56" selection-start-column="23" selection-end-line="56" selection-end-column="23" />
+            <state relative-caret-position="375">
+              <caret line="15" column="38" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="38" />
               <folding />
             </state>
           </provider>
@@ -139,8 +139,8 @@
         <option value="$PROJECT_DIR$/app/listing/listing.module.ts" />
         <option value="$PROJECT_DIR$/config/systemjs.config.js" />
         <option value="$PROJECT_DIR$/app/listing/listing.html" />
-        <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/server/bin/www" />
+        <option value="$PROJECT_DIR$/package.json" />
       </list>
     </option>
   </component>
@@ -363,12 +363,12 @@
       <option name="presentableId" value="Default" />
       <updated>1478714628590</updated>
       <workItem from="1478714630205" duration="391000" />
-      <workItem from="1478715109798" duration="67856000" />
+      <workItem from="1478715109798" duration="68208000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="68247000" />
+    <option name="totallyTimeSpent" value="68599000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -793,8 +793,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1400">
-          <caret line="56" column="23" selection-start-line="56" selection-start-column="23" selection-end-line="56" selection-end-column="23" />
+        <state relative-caret-position="375">
+          <caret line="15" column="38" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="38" />
           <folding />
         </state>
       </provider>
