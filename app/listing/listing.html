@@ -1,0 +1,63 @@
+<div class="container" id="portfolio">
+    <div *ngIf="ituneslisting?.feed !== undefined " class="row is-flex">
+        <div *ngFor="let element of generateArray(ituneslisting.feed.entry)"
+             class="col-sm-6 col-md-4 col-lg-3">
+            <div class="thumbnail equalize same-height">
+                    <a target="_blank"
+                       href="{{element['link'][0]? element['link'][0].attributes.href : element['link'].attributes.href }}">
+                        <img class="img-thumbnail img-responsive" [hidden]="!element['im:image'][2]"
+                             src="{{element['im:image'][2].label}}" alt=""/>
+                    </a>
+                <div class = "caption">
+                    <h6 class="media-heading"><b>{{element['title'].label}}</b></h6>
+
+                    <p>
+                        <tooltip-content #myTooltip>
+                            {{element['summary'].label}}
+                        </tooltip-content>
+
+                        <button [tooltip]="myTooltip" tooltipAnimation="true" tooltipPlacement="left" class="btn btn-info" role = "button">Details</button>
+                        <a target="_blank" href="{{element['link'][0]? element['link'][0].attributes.href : element['link'].attributes.href }}" class="btn btn-info" role = "button">Buy</a>
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div *ngIf="amazonlisting != undefined && amazonlisting.length > 0" class="row is-flex">
+        <div *ngFor="let element of generateArray(amazonlisting)" class="col-sm-6 col-md-4 col-lg-3">
+            <div class="thumbnail equalize same-height">
+
+                <a target="_blank" href="{{element['DetailPageURL'][0] }}">
+                    <img class="img-thumbnail" [hidden]="!element['MediumImage'][0].URL[0]"
+                         src="{{element['MediumImage'][0].URL}}" alt=""/>
+                </a>
+                <div class = "caption">
+                    <h6 class="media-heading"><b>{{element['ItemAttributes'][0].Title[0]}}</b></h6>
+
+                    <p>
+                        <tooltip-content #myTooltip>
+
+                            <ul *ngFor="let feature of element['ItemAttributes'][0].Feature">
+                                <li>{{feature}}</li>
+                            </ul>
+                        </tooltip-content>
+
+                        <button [tooltip]="myTooltip" tooltipAnimation="true" tooltipPlacement="left" class="btn btn-info" role = "button">Details</button>
+
+                        <a target="_blank" href="{{element['DetailPageURL'][0] }}" class="btn btn-info" role = "button">Buy</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--div *ngIf="! equals({}, videos.rss)" class="row">
+        <div *ngFor='let video of videos.rss.channel.item' class="col-lg-2 col-md-5 col-xs-12 thumb">
+            <div class="thumbnail">
+                <a  href="#">
+                    <img ng-hide="video['coverArt'][2] == ''" class="img-responsive" src="{{video['coverArt'][2].__text    }}" alt="">
+                </a>
+            </div>
+        </div>
+    </div-->
+</div>
