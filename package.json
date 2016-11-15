@@ -1,7 +1,7 @@
 {
   "name": "best10",
   "version": "1.0.2",
-  "main": "../server/index.js",
+  "main": "./server/index.js",
   "keywords": [
     "angular2",
     "angular",
@@ -15,7 +15,7 @@
     "tsc": "tsc",
     "tsc:w": "tsc -w",
     "build": "ng build --prod --output-path=dist/client && npm run _server:build",
-    "start": "nodemon ../server/index.js",
+    "start": "nodemon ./server/index.js",
     "typings": "typings"
   },
   "dependencies": {
