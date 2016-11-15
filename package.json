@@ -15,7 +15,7 @@
     "tsc": "tsc",
     "tsc:w": "tsc -w",
     "build": "ng build --prod --output-path=dist/client && npm run _server:build",
-    "start": "nodemon index.js",
+    "start": "node index.js",
     "typings": "typings"
   },
   "dependencies": {
