@@ -5,8 +5,6 @@
 typings
 
 # Ignore .js file transpiled from typescript
-*.js.map
-*.js
 
 # Allow the systemjs.config.js
 !config/systemjs.config.js
