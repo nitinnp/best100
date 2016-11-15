@@ -1,6 +1,7 @@
 {
   "name": "best10",
   "version": "1.0.2",
+  "main": "server/bin/index.js",
   "keywords": [
     "angular2",
     "angular",
@@ -13,6 +14,7 @@
     "dev": "concurrently \"npm run tsc:w\" \"npm start\" ",
     "tsc": "tsc",
     "tsc:w": "tsc -w",
+    "build": "ng build --prod --output-path=dist/client && npm run _server:build",
     "start": "nodemon ./server/bin/www",
     "typings": "typings"
   },
