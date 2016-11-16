@@ -13,7 +13,7 @@
 
                     <p>
                         <tooltip-content #myTooltip>
-                            {{element['summary'].label}}
+                            {{element['summary']?element['summary'].label:''}}
                         </tooltip-content>
 
                         <button [tooltip]="myTooltip" tooltipAnimation="true" tooltipPlacement="left" class="btn btn-info" role = "button">Details</button>
