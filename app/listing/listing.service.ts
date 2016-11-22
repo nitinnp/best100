@@ -23,8 +23,13 @@ export class ListingService {
         let params: URLSearchParams = new URLSearchParams();
         let urlPathArry = type.split("-");
         params.set('searchIndex',urlPathArry[1] );
-        if(! type.startsWith("amz")) {
+        if(type.startsWith("itunes")) {
              return this.http.get('/ituneslisting',{
+                search: params
+            }).map(this.extractData).catch(this.handleError);
+        }
+        if(type.startsWith("bestbuy")) {
+            return this.http.get('/bestbuylisting',{
                 search: params
             }).map(this.extractData).catch(this.handleError);
         }
@@ -40,7 +45,7 @@ export class ListingService {
     extractData(res: Response) {
 
         let body = res.text();
-        console.debug(body);
+       // console.debug(body);
         body = JSON.parse(body);
         return body || { };
     }

@@ -34,6 +34,7 @@ app.use('/config', express.static(path.join(__dirname, '/config')));
 app.use('/', routes);
 app.use('/amazonlisting', routes);
 app.use('/ituneslisting', routes);
+app.use('/bestbuylisting', routes);
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   var err;

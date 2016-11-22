@@ -23,8 +23,13 @@ var ListingService = (function () {
         var params = new http_1.URLSearchParams();
         var urlPathArry = type.split("-");
         params.set('searchIndex', urlPathArry[1]);
-        if (!type.startsWith("amz")) {
+        if (type.startsWith("itunes")) {
             return this.http.get('/ituneslisting', {
+                search: params
+            }).map(this.extractData).catch(this.handleError);
+        }
+        if (type.startsWith("bestbuy")) {
+            return this.http.get('/bestbuylisting', {
                 search: params
             }).map(this.extractData).catch(this.handleError);
         }
@@ -36,7 +41,7 @@ var ListingService = (function () {
     };
     ListingService.prototype.extractData = function (res) {
         var body = res.text();
-        console.debug(body);
+        // console.debug(body);
         body = JSON.parse(body);
         return body || {};
     };

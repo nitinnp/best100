@@ -20,6 +20,7 @@ import {BestDatePipe} from "../shared/directives/bestDatePipe";
 export class ListingComponent implements OnInit,AfterViewInit,AfterViewChecked{
     amazonlisting:{};
     ituneslisting:{};
+    bestbuylisting:{};
     today:any;
     type:any;
     constructor(
@@ -65,18 +66,25 @@ export class ListingComponent implements OnInit,AfterViewInit,AfterViewChecked{
 
             console.debug(this.type);
             if(this.type === undefined){
-                this.type = "topfreeapplications";
+                this.type = "Movies";
             }
             this.ListingService.getListing(this.type).subscribe(
                 data => {
                     console.log(data);
                     if(this.type.startsWith("amz")) {
                         this.ituneslisting= undefined;
+                        this.bestbuylisting= undefined;
                         this.amazonlisting = data;
 
                     }
-                    else{
+                    else if(this.type.startsWith("itunes")){
                         this.ituneslisting= data;
+                        this.amazonlisting = undefined;
+                        this.bestbuylisting= undefined;
+                    }
+                    else{
+                        this.bestbuylisting= data;
+                        this.ituneslisting= undefined;
                         this.amazonlisting = undefined;
                     }
 

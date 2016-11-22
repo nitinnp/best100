@@ -8,6 +8,7 @@ var util = require('util');
 var request = require('request');
 var amazonMap = null;
 var itunesMap = null;
+var bestBuyMap = null;
 amazonMap = {
     'Laptops': 'Electronics-Laptops',
     'Desktop': 'Electronics-Desktops',
@@ -21,6 +22,20 @@ amazonMap = {
     'Songs': 'Music-Audio-salesrank',
     'Music Videos': 'Music-Video-salesrank',
     'Audio Books': 'Books-eBooks'
+};
+bestBuyMap = {
+    'Laptops': 'abcat0502000',
+    'Desktop': 'abcat0501000',
+    'Cell Phones': 'pcmcat209400050001',
+    'Televisions': 'abcat0101000',
+    'Camera': 'abcat0401000',
+    'Books': '',
+    'VideoGames': '',
+    'Apps': '',
+    'Movies': '',
+    'Songs': '',
+    'Music Videos': '',
+    'Audio Books': ''
 };
 itunesMap = {
     'Laptops': '',
@@ -44,6 +59,22 @@ router.get('/ituneslisting', function (req, res, next) {
     var searchIndex = itunesMap[param];
     console.log(searchIndex);
     request('https://itunes.apple.com/us/rss/' + searchIndex + '/limit=20/json', function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+            res.set('Content-Type', 'application/json');
+            res.json(JSON.parse(body));
+        }
+    });
+});
+router.get('/bestbuylisting', function (req, res, next) {
+    console.log("Inside best buy listing");
+    var param = req.param('searchIndex');
+    console.log(param);
+    var searchIndex = bestBuyMap[param];
+    console.log(searchIndex);
+    request('https://api.bestbuy.com/v1/products(customerReviewCount>100&(categoryPath.id=' + searchIndex + '))?apiKey=m14CIg2ti3ZpmV9eGtMKumlW' +
+        '&sort=bestSellingRank.asc&show=bestSellingRank,condition,description,details.name,details.value,features.feature,image,' +
+        'longDescription,manufacturer,mobileUrl,modelNumber,name,onSale,regularPrice,salePrice,shipping,shippingCost,' +
+        'shortDescription,sku,thumbnailImage,type,upc,url&pageSize=20&format=json', function (error, response, body) {
         if (!error && response.statusCode == 200) {
             res.set('Content-Type', 'application/json');
             res.json(JSON.parse(body));

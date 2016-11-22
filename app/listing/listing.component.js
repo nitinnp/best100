@@ -49,16 +49,23 @@ var ListingComponent = (function () {
             _this.type = params['id'];
             console.debug(_this.type);
             if (_this.type === undefined) {
-                _this.type = "topfreeapplications";
+                _this.type = "Movies";
             }
             _this.ListingService.getListing(_this.type).subscribe(function (data) {
                 console.log(data);
                 if (_this.type.startsWith("amz")) {
                     _this.ituneslisting = undefined;
+                    _this.bestbuylisting = undefined;
                     _this.amazonlisting = data;
                 }
-                else {
+                else if (_this.type.startsWith("itunes")) {
                     _this.ituneslisting = data;
+                    _this.amazonlisting = undefined;
+                    _this.bestbuylisting = undefined;
+                }
+                else {
+                    _this.bestbuylisting = data;
+                    _this.ituneslisting = undefined;
                     _this.amazonlisting = undefined;
                 }
             }, function (error) { console.log("error in service"); });

@@ -12,11 +12,15 @@
 
                 <a  href="#1b" data-toggle="tab">Itunes Store</a>
             </li>
+            <li *ngIf= "((type.indexOf('Laptops') > 0)|| (type.indexOf('Desktop') > 0)
+            || (type.indexOf('Cell Phones') > 0) || (type.indexOf('Televisions') > 0 ) ||
+            (type.indexOf('Camera') > 0 ) )" (click)="onSelect('bestbuy')" class="{{type.indexOf('bestbuy')==0? 'active':''}}" >
+                <a  href="#1c" data-toggle="tab">Best Buy</a>
+            </li>
             <!--li (click)="onSelect('rakuten')">
                 <a  href="#1c" data-toggle="tab">Rakuten</a>
             </li-->
         </ul>
-
 
         <div *ngIf="ituneslisting?.feed !== undefined " class="row is-flex" id="1b">
             <div *ngFor="let element of generateArray(ituneslisting.feed.entry)"
@@ -74,7 +78,37 @@
 
                             <a target="_blank" href="{{element['DetailPageURL'][0] }}" class="btn btn-info"
                                role="button">Buy</a>
-                            <b>{{element['ItemAttributes'][0].ListPrice[0].FormattedPrice}}</b>
+                            <b>{{element['ItemAttributes'][0].ListPrice == undefined ?'':element['ItemAttributes'][0].ListPrice[0].FormattedPrice}}</b>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="bestbuylisting != undefined && bestbuylisting.products.length > 0" class="row is-flex" id="1c">
+            <div *ngFor="let element of generateArray(bestbuylisting.products)" class="col-sm-6 col-md-4 col-lg-3">
+                <div class="thumbnail equalize same-height">
+                    <a target="_blank" href="{{element.url }}">
+                        <img class="img-thumbnail" [hidden]="!element.thumbnailImage"
+                             src="{{element.thumbnailImage}}" alt=""/>
+                    </a>
+                    <div class="caption">
+                        <h6 class="media-heading"><b>{{element.name}}</b></h6>
+
+                        <p>
+                            <tooltip-content #myTooltip>
+
+                                <ul *ngFor="let feature of element.features">
+                                    <li>{{feature.feature}}</li>
+                                </ul>
+                            </tooltip-content>
+
+                            <button [tooltip]="myTooltip" tooltipAnimation="true" tooltipPlacement="left"
+                                    class="btn btn-info" role="button">Details
+                            </button>
+
+                            <a target="_blank" href="{{element.url}}" class="btn btn-info"
+                               role="button">Buy</a>
+                            <b>${{element.salePrice}}</b>
                         </p>
                     </div>
                 </div>
