@@ -9,10 +9,11 @@ var session = require('express-session');
 var favicon = require('serve-favicon');
 var routes = require('./server/routes/index');
 var app = express();
+
 // view engine setup
 // app.set('views', path.join(__dirname, 'views'));
 // app.set('view engine', 'jade');
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, '/server/views'));
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
 app.use(bodyParser.json());
@@ -32,7 +33,7 @@ app.use('/js', express.static(path.join(__dirname, '/public/assets/js')));
 app.use('/config', express.static(path.join(__dirname, '/config')));
 app.use('/', routes);
 app.use('/amazonlisting', routes);
-console.log("here1");
+app.use('/ituneslisting', routes);
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   var err;
@@ -142,6 +143,7 @@ function onListening() {
       ? 'pipe ' + addr
       : 'port ' + addr.port;
   debug('Listening on ' + bind);
+  console.log('Listening on ' + bind);
 }
 
 

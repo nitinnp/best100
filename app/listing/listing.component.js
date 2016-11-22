@@ -31,6 +31,14 @@ var ListingComponent = (function () {
     ListingComponent.prototype.ngOnInit = function () {
         this.getListing();
     };
+    ListingComponent.prototype.onSelect = function (affiliateType) {
+        console.debug(affiliateType);
+        if (this.type.indexOf("-") > 0) {
+            var pathArry = this.type.split("-");
+            this.type = pathArry[1];
+        }
+        this.router.navigate(['/listing/' + affiliateType + '-' + this.type]);
+    };
     ListingComponent.prototype.ngAfterViewInit = function () {
     };
     ListingComponent.prototype.ngAfterViewChecked = function () {
@@ -38,14 +46,14 @@ var ListingComponent = (function () {
     ListingComponent.prototype.getListing = function () {
         var _this = this;
         this.route.params.forEach(function (params) {
-            var type = params['id'];
-            console.debug(type);
-            if (type === undefined) {
-                type = "topfreeapplications";
+            _this.type = params['id'];
+            console.debug(_this.type);
+            if (_this.type === undefined) {
+                _this.type = "topfreeapplications";
             }
-            _this.ListingService.getListing(type).subscribe(function (data) {
+            _this.ListingService.getListing(_this.type).subscribe(function (data) {
                 console.log(data);
-                if (type.startsWith("amz")) {
+                if (_this.type.startsWith("amz")) {
                     _this.ituneslisting = undefined;
                     _this.amazonlisting = data;
                 }

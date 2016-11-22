@@ -14,7 +14,7 @@ var wikipedia_component_1 = require("./wiki/wikipedia.component");
 var listing_component_1 = require("./listing/listing.component");
 var routes = [
     { path: 'admin', loadChildren: 'app/admin/admin.module#AdminModule' },
-    { path: '', redirectTo: 'listing/topmovies', pathMatch: 'full' },
+    { path: '', redirectTo: 'listing/amz-Movies', pathMatch: 'full' },
     { path: 'wiki', component: wikipedia_component_1.WikiComponent },
     { path: 'listing/:id', component: listing_component_1.ListingComponent }
 ];

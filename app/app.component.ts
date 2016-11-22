@@ -10,16 +10,21 @@ declare var jQuery:JQueryStatic;
     <div class="sticky" data-sticky data-options="anchor: page; marginTop: 0; stickyOn: small;">
      <nav class='greedy-nav'>
         <button><div class="hamburger"></div></button>
+          
           <ul class='visible-links'>
-            <li><a routerLink="listing/amz-Electronics-Laptops" >Laptops</a></li> 
-            <li><a routerLink="listing/amz-Electronics-Desktops" >Desktop</a></li> 
-            <li><a routerLink="listing/amz-Books-Best Sellers">Books</a></li>
-            <li><a routerLink="listing/topfreeapplications"  >IOS Apps</a></li>
-            <li><a routerLink="listing/topmovies"  >Movies</a></li>
-            <li><a routerLink="listing/topsongs"  >Songs</a></li>
-            <li><a routerLink="listing/topmusicvideos"  >Music Videos</a></li>
-            <li><a routerLink="listing/toptvepisodes"  >TV Episodes</a></li>
-            <li><a routerLink="listing/topaudiobooks" >Audio Books</a></li> 
+            <li><a target="_blank" href='#'>Top Rated Products</a></li>
+            <li><a routerLink="listing/amz-Laptops" >Laptops</a></li> 
+            <li><a routerLink="listing/amz-Desktop" >Desktop</a></li> 
+            <li><a routerLink="listing/amz-Cell Phones" >Cell Phones</a></li> 
+            <li><a routerLink="listing/amz-Televisions" >Televisions</a></li> 
+            <li><a routerLink="listing/amz-Camera" >Camera</a></li> 
+            <li><a routerLink="listing/amz-Books">Books</a></li>
+            <li><a routerLink="listing/amz-VideoGames">Video Games</a></li> 
+            <li><a routerLink="listing/amz-Apps"  >Apps</a></li>
+            <li><a routerLink="listing/amz-Movies"  >Movies</a></li>
+            <li><a routerLink="listing/amz-Songs"  >Songs</a></li>
+            <li><a routerLink="listing/amz-Music Videos"  >Music Videos</a></li>
+            <li><a routerLink="listing/amz-Audio Books" >Audio Books</a></li> 
     
           </ul>
           <ul class='hidden-links hidden'></ul>

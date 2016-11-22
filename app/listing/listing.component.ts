@@ -21,7 +21,7 @@ export class ListingComponent implements OnInit,AfterViewInit,AfterViewChecked{
     amazonlisting:{};
     ituneslisting:{};
     today:any;
-
+    type:any;
     constructor(
         private router:Router,private route: ActivatedRoute,
         private ListingService: ListingService) {
@@ -42,6 +42,15 @@ export class ListingComponent implements OnInit,AfterViewInit,AfterViewChecked{
         this.getListing();
 
     }
+    onSelect(affiliateType:any): void {
+        console.debug(affiliateType);
+        if(this.type.indexOf("-") > 0) {
+            let pathArry = this.type.split("-");
+            this.type = pathArry[1];
+        }
+        this.router.navigate(['/listing/'+affiliateType+'-'+this.type]);
+
+    }
     ngAfterViewInit () {
 
     }
@@ -52,16 +61,16 @@ export class ListingComponent implements OnInit,AfterViewInit,AfterViewChecked{
     getListing(): void {
 
         this.route.params.forEach((params: Params) => {
-            let type = params['id'];
+            this.type = params['id'];
 
-            console.debug(type);
-            if(type === undefined){
-                type = "topfreeapplications";
+            console.debug(this.type);
+            if(this.type === undefined){
+                this.type = "topfreeapplications";
             }
-            this.ListingService.getListing(type).subscribe(
+            this.ListingService.getListing(this.type).subscribe(
                 data => {
                     console.log(data);
-                    if(type.startsWith("amz")) {
+                    if(this.type.startsWith("amz")) {
                         this.ituneslisting= undefined;
                         this.amazonlisting = data;
 

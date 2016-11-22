@@ -20,15 +20,15 @@ var ListingService = (function () {
     }
     ListingService.prototype.getListing = function (type) {
         console.log('Inside get listing..');
+        var params = new http_1.URLSearchParams();
+        var urlPathArry = type.split("-");
+        params.set('searchIndex', urlPathArry[1]);
         if (!type.startsWith("amz")) {
-            var url = this.getURL(type);
-            return this.http.get(this.getURL(type)).map(this.extractData).catch(this.handleError);
+            return this.http.get('/ituneslisting', {
+                search: params
+            }).map(this.extractData).catch(this.handleError);
         }
         else {
-            var params = new http_1.URLSearchParams();
-            var urlPathArry = type.split("-");
-            params.set('searchIndex', urlPathArry[1]);
-            params.set('keyword', urlPathArry[2]);
             return this.http.get('/amazonlisting', {
                 search: params
             }).map(this.extractData).catch(this.handleError);
@@ -36,6 +36,7 @@ var ListingService = (function () {
     };
     ListingService.prototype.extractData = function (res) {
         var body = res.text();
+        console.debug(body);
         body = JSON.parse(body);
         return body || {};
     };
