@@ -1,7 +1,7 @@
 <div class="container" id="portfolio">
     <div id="exTab3" class="container">
 
-        <ul class="nav nav-pills" >
+        <ul class="nav nav-pills navbar-left" >
             <li  (click)="onSelect('amz')" class="{{type.indexOf('amz')==0? 'active':''}}" >
                 <a  href="#1a" data-toggle="tab">Amazon</a>
             </li>
@@ -21,7 +21,20 @@
                 <a  href="#1c" data-toggle="tab">Rakuten</a>
             </li-->
         </ul>
+        <ul class="social nav navbar-nav navbar-right">
+            <li>
+                <a href="http://facebook.com/" >
+                    <i class="fa fa-lg fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a href="http://twitter.com/" >
+                    <i class="fa fa-lg fa-twitter"></i>
+                </a>
+            </li>
+            <li><a href="http://googleplus.com/"><i class="fa fa-lg fa-google-plus"></i></a></li>
 
+        </ul>
         <div *ngIf="ituneslisting?.feed !== undefined " class="row is-flex" id="1b">
             <div *ngFor="let element of generateArray(ituneslisting.feed.entry)"
                  class="col-sm-6 col-md-4 col-lg-3">
