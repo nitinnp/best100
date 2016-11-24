@@ -16,7 +16,7 @@ var routes = [
     { path: 'admin', loadChildren: 'app/admin/admin.module#AdminModule' },
     { path: '', redirectTo: 'listing/amz-Movies', pathMatch: 'full' },
     { path: 'wiki', component: wikipedia_component_1.WikiComponent },
-    { path: 'listing/:id', component: listing_component_1.ListingComponent }
+    { path: 'listing/:id', component: listing_component_1.ListingComponent, pathMatch: 'prefix' }
 ];
 var AppRoutingModule = (function () {
     function AppRoutingModule() {

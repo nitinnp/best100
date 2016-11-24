@@ -3,8 +3,8 @@ html {
 }
 body {
 	min-width: 320px;
-	padding: 5px;
-	background: #1c2026 !important;
+	padding: 0;
+	background: #F2F2F2 !important;
 	font-family: Helvetica, sans-serif;
 }
 .social {
@@ -75,6 +75,8 @@ body {
 	padding : 5px 15px;
 }
 
+
+
 @include media-breakpoint-up(sm) {
 	html {
 		font-size: 16px;
@@ -92,60 +94,111 @@ body {
 		font-size: 28px;
 	}
 }
-#portfolio .row{
-	margin:50px /* margin around the "whole row" not inbetween "stacked rows" */
 
+#portfolio .row {
+	margin: 50px/* margin around the "whole row" not inbetween "stacked rows" */
 }
 
-#portfolio .img-thumbnail{
-	border:150px;
-	border-radius:4px; /* slight round in images in gallery */
-	margin:0px;
-	padding:0px;
-
+.thumbnail {
+	font-family: Helvetica, sans-serif !important;
+	border: none !important;
+	box-shadow: 0px 1px 2px 0px rgba(50, 50, 50, 0.35) !important;
+	padding: 4px 20px !important;
 }
+
+.thumbnail .caption {
+	padding: 0 !important;
+	padding-top: 10px !important;
+	color: #333;
+	border-top: 1px solid #e6e6e6 !important;
+	margin-top: 10px;
+	font-size: 15px;
+}
+
+.thumbnail .caption .media-heading {
+	min-height: 30px
+}
+
+#portfolio .img-thumbnail {
+	border: none !important;
+	box-shadow: none !important;
+	border-radius: 4px;
+	/* slight round in images in gallery */
+}
+
+.caption .tooltip-inner {
+	max-width: 300px;
+	padding: 10;
+	color: #333;
+	text-align: left;
+	background-color: #ffffff;
+	border-radius: 4px;
+	font-size: 13px;
+	border:10px solid #ccc;
+	font-family: serif;
+}
+.tooltip.left .tooltip-arrow {
+	border-bottom-color: #ccc;
+}
+
+.tooltip-inner {
+	/*box-shadow: 3px 3px 3px 0px rgba(50, 50, 50, 0.55) !important;*/
+}
+
+.tooltip.in{opacity:1!important;}
+
 listing {
-
-	white-space: normal; !important;
+	white-space: normal;
+!important;
 }
 
 .row.is-flex {
 	display: flex;
 	flex-wrap: wrap;
 }
-.row.is-flex > [class*='col-'] {
+
+.row.is-flex>[class*='col-'] {
 	display: flex;
 	flex-direction: column;
 }
+
 a {
 	color: #fff;
 }
+
 .greedy-nav {
 	position: relative;
 	min-width: 250px;
-	background: #fff;
+	background: #ff9800;
+	box-shadow: 0px 1px 2px 0px rgba(50, 50, 50, 0.35) !important;
 }
-.greedy-nav h1 {
-	color: #fff;
-	font-weight: bold;
-	margin-top: 2rem;
-	font-size: 24px;
+
+.btn-info {
+	background: #ff9800 !important;
+	border: none !important;
+	text-shadow: none !important;
 }
-.greedy-nav ol, ul {
+
+.greedy-nav ol,
+ul {
 	margin-top: 0 !important;
 	margin-bottom: 0px !important;
 }
+
 .greedy-nav a {
 	display: block;
 	padding: 10px 15px;
-	background: #fff;
+	background: #ff9800;
 	font-size: 15px;
-	color: #ff9800;
-text-decoration: none;
+	color: #fff;
+	text-decoration: none;
 }
+
 .greedy-nav a:hover {
 	color: #ef6c00;
+	text-decoration: none;
 }
+
 .greedy-nav button {
 	position: absolute;
 	height: 100%;
@@ -157,9 +210,11 @@ text-decoration: none;
 	color: #fff;
 	cursor: pointer;
 }
+
 .greedy-nav button:hover {
-	background-color: #ef6c00;
+	background-color: #fff;
 }
+
 .greedy-nav button::after {
 	content: attr(count);
 	position: absolute;
@@ -176,9 +231,11 @@ text-decoration: none;
 	border: 3px solid #fff;
 	font-weight: bold;
 }
+
 .greedy-nav button:hover::after {
 	transform: scale(1.075);
 }
+
 .greedy-nav .hamburger {
 	position: relative;
 	width: 32px;
@@ -186,6 +243,7 @@ text-decoration: none;
 	background: #fff;
 	margin: auto;
 }
+
 .greedy-nav .hamburger:before,
 .greedy-nav .hamburger:after {
 	content: '';
@@ -195,34 +253,43 @@ text-decoration: none;
 	height: 4px;
 	background: #fff;
 }
+
 .greedy-nav .hamburger:before {
 	top: -8px;
 }
+
 .greedy-nav .hamburger:after {
 	bottom: -8px;
 }
+
 .greedy-nav .visible-links {
 	display: inline-table;
 }
+
 .greedy-nav .visible-links li {
 	display: table-cell;
-	border-left: 1px solid #ff9800;
+	border-left: 1px solid #F2F2F2;
 }
+
 .greedy-nav .hidden-links {
 	position: absolute;
 	right: 0px;
 	top: 100%;
 }
+
 .greedy-nav .hidden-links li {
 	display: block;
 	border-top: 1px solid #f57c00;
 }
+
 .greedy-nav .visible-links li:first-child {
 	font-weight: bold;
 }
+
 .greedy-nav .visible-links li:first-child a {
-	color: #ff9800 !important;
+	color: #fff !important;
 }
+
 .greedy-nav .hidden {
 	visibility: hidden;
 }

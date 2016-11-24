@@ -9,7 +9,7 @@ const routes: Routes = [
     { path: 'admin',    loadChildren: 'app/admin/admin.module#AdminModule'},
     { path: '', redirectTo: 'listing/amz-Movies', pathMatch: 'full' },
     { path: 'wiki',     component: WikiComponent },
-    { path: 'listing/:id',     component: ListingComponent }
+    { path: 'listing/:id',     component: ListingComponent,pathMatch: 'prefix' }
 
 ];
 @NgModule({
