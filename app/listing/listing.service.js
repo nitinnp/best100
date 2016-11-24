@@ -33,6 +33,11 @@ var ListingService = (function () {
                 search: params
             }).map(this.extractData).catch(this.handleError);
         }
+        if (type.startsWith("walmart")) {
+            return this.http.get('/walmartlisting', {
+                search: params
+            }).map(this.extractData).catch(this.handleError);
+        }
         else {
             return this.http.get('/amazonlisting', {
                 search: params

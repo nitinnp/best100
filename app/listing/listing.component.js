@@ -57,16 +57,25 @@ var ListingComponent = (function () {
                     _this.ituneslisting = undefined;
                     _this.bestbuylisting = undefined;
                     _this.amazonlisting = data;
+                    _this.walmartlisting = undefined;
                 }
                 else if (_this.type.startsWith("itunes")) {
                     _this.ituneslisting = data;
                     _this.amazonlisting = undefined;
                     _this.bestbuylisting = undefined;
+                    _this.walmartlisting = undefined;
+                }
+                else if (_this.type.startsWith("walmart")) {
+                    _this.ituneslisting = undefined;
+                    _this.amazonlisting = undefined;
+                    _this.bestbuylisting = undefined;
+                    _this.walmartlisting = data;
                 }
                 else {
                     _this.bestbuylisting = data;
                     _this.ituneslisting = undefined;
                     _this.amazonlisting = undefined;
+                    _this.walmartlisting = undefined;
                 }
             }, function (error) { console.log("error in service"); });
         });

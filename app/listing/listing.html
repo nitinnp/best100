@@ -5,6 +5,9 @@
             <li  (click)="onSelect('amz')" class="{{type.indexOf('amz')==0? 'active':''}}" >
                 <a  href="#1a" data-toggle="tab">Amazon</a>
             </li>
+            <li *ngIf= "(!(type.indexOf('Apps') > 0))"  (click)="onSelect('walmart')" class="{{type.indexOf('walmart')==0? 'active':''}}" >
+                <a  href="#1d" data-toggle="tab">Walmart</a>
+            </li>
             <li *ngIf= "((type.indexOf('Apps') > 0)|| (type.indexOf('Movies') > 0)
             || (type.indexOf('Songs') > 0) || (type.indexOf('Music Videos') > 0 ) ||
             (type.indexOf('TV Episodes') > 0 ) || (type.indexOf('Audio Books') > 0))"
@@ -64,6 +67,35 @@
                     </div>
                 </div>
 
+            </div>
+        </div>
+        <div *ngIf="walmartlisting != undefined && walmartlisting.items.length > 0" class="row is-flex" id="1d">
+            <div *ngFor="let element of generateArray(walmartlisting.items)" class="col-sm-6 col-md-4 col-lg-3">
+                <div class="thumbnail equalize same-height">
+
+                    <a target="_blank" href="{{element.productUrl }}">
+                        <img class="img-thumbnail" [hidden]="!element.mediumImage"
+                             src="{{element.mediumImage}}" alt=""/>
+                    </a>
+                    <div class="caption">
+                        <h6 class="media-heading"><b>{{element.name}}</b></h6>
+
+                        <p>
+                            <tooltip-content #myTooltip>
+                                {{element.longDescription}}
+
+                            </tooltip-content>
+
+                            <button [tooltip]="myTooltip" tooltipAnimation="true" tooltipPlacement="left"
+                                    class="btn btn-info" role="button">Details
+                            </button>
+
+                            <a target="_blank" href="{{element.productUrl }}" class="btn btn-info"
+                               role="button">Buy</a>
+                            <b>{{element.salePrice == undefined ?'':element.salePrice}}</b>
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
         <div *ngIf="amazonlisting != undefined && amazonlisting.length > 0" class="row is-flex" id="1a">

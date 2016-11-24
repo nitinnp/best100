@@ -21,6 +21,7 @@ export class ListingComponent implements OnInit,AfterViewInit,AfterViewChecked{
     amazonlisting:{};
     ituneslisting:{};
     bestbuylisting:{};
+    walmartlisting:{};
     today:any;
     type:any;
     constructor(
@@ -75,17 +76,26 @@ export class ListingComponent implements OnInit,AfterViewInit,AfterViewChecked{
                         this.ituneslisting= undefined;
                         this.bestbuylisting= undefined;
                         this.amazonlisting = data;
+                        this.walmartlisting = undefined;
 
                     }
                     else if(this.type.startsWith("itunes")){
                         this.ituneslisting= data;
                         this.amazonlisting = undefined;
                         this.bestbuylisting= undefined;
+                        this.walmartlisting = undefined;
+                    }
+                    else if(this.type.startsWith("walmart")){
+                        this.ituneslisting= undefined;
+                        this.amazonlisting = undefined;
+                        this.bestbuylisting= undefined;
+                        this.walmartlisting = data;
                     }
                     else{
                         this.bestbuylisting= data;
                         this.ituneslisting= undefined;
                         this.amazonlisting = undefined;
+                        this.walmartlisting = undefined;
                     }
 
                 }, error =>{console.log("error in service")});
