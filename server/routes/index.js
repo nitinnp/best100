@@ -10,6 +10,7 @@ var amazonMap = null;
 var itunesMap = null;
 var bestBuyMap = null;
 var walmartMap = null;
+var rakutenMap = null;
 walmartMap = {
     'Laptops': 'Laptop-3944_3951_1089430',
     'Desktop': 'Desktop-3944_3951_132982',
@@ -52,6 +53,20 @@ bestBuyMap = {
     'Music Videos': '',
     'Audio Books': ''
 };
+rakutenMap = {
+    'Laptops': 'Laptops',
+    'Desktop': 'Desktop',
+    'Cell Phones': 'Cell Phones',
+    'Televisions': 'Televisions',
+    'Camera': 'Camera',
+    'Books': 'Books',
+    'VideoGames': 'Video Games',
+    'Apps': '',
+    'Movies': 'BLU-RAY MOVIES',
+    'Songs': 'Music CD',
+    'Music Videos': 'Music Videos',
+    'Audio Books': 'Audio Books'
+};
 itunesMap = {
     'Laptops': '',
     'Desktop': '',
@@ -89,6 +104,20 @@ router.get('/walmartlisting', function (req, res, next) {
     console.log(searchIndex);
     request('http://api.walmartlabs.com/v1/search?query=' + paramArry[0] + '&format=json&' +
         'categoryId=' + paramArry[1] + '&apiKey=ve3qcwh6dg4by7akjq7kxg97&sort=bestseller&numItems=25', function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+            res.set('Content-Type', 'application/json');
+            res.json(JSON.parse(body));
+        }
+    });
+});
+router.get('/rakutenlisting', function (req, res, next) {
+    console.log("Inside rakuten listing");
+    var param = req.param('searchIndex');
+    console.log(param);
+    var keyword = rakutenMap[param];
+    console.log(keyword);
+    request('http://popshops.com/v3/products.json?catalog=dp4rtmme6tbhugpv6i59yiqmr' +
+        '&account=1j0h9zs42a8w062zk21xul727&keyword=' + keyword + '&results_per_page=40&include_deals=1', function (error, response, body) {
         if (!error && response.statusCode == 200) {
             res.set('Content-Type', 'application/json');
             res.json(JSON.parse(body));

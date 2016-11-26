@@ -7,7 +7,7 @@ import {ListingComponent} from "./listing/listing.component";
 
 const routes: Routes = [
     { path: 'admin',    loadChildren: 'app/admin/admin.module#AdminModule'},
-    { path: '', redirectTo: 'listing/amz-Movies', pathMatch: 'full' },
+    { path: '', redirectTo: 'listing/amz-Laptops', pathMatch: 'full' },
     { path: 'wiki',     component: WikiComponent },
     { path: 'listing/:id',     component: ListingComponent,pathMatch: 'prefix' }
 

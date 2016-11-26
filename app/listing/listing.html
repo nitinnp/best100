@@ -8,6 +8,7 @@
             <li *ngIf= "(!(type.indexOf('Apps') > 0))"  (click)="onSelect('walmart')" class="{{type.indexOf('walmart')==0? 'active':''}}" >
                 <a  href="#1d" data-toggle="tab">Walmart</a>
             </li>
+
             <li *ngIf= "((type.indexOf('Apps') > 0)|| (type.indexOf('Movies') > 0)
             || (type.indexOf('Songs') > 0) || (type.indexOf('Music Videos') > 0 ) ||
             (type.indexOf('TV Episodes') > 0 ) || (type.indexOf('Audio Books') > 0))"
@@ -19,6 +20,9 @@
             || (type.indexOf('Cell Phones') > 0) || (type.indexOf('Televisions') > 0 ) ||
             (type.indexOf('Camera') > 0 ) )" (click)="onSelect('bestbuy')" class="{{type.indexOf('bestbuy')==0? 'active':''}}" >
                 <a  href="#1c" data-toggle="tab">Best Buy</a>
+            </li>
+            <li *ngIf= "(!(type.indexOf('Apps') > 0))"  (click)="onSelect('rakuten')" class="{{type.indexOf('rakuten')==0? 'active':''}}" >
+                <a  href="#1e" data-toggle="tab">Rakuten</a>
             </li>
             <!--li (click)="onSelect('rakuten')">
                 <a  href="#1c" data-toggle="tab">Rakuten</a>
@@ -61,7 +65,7 @@
                             <a target="_blank"
                                href="{{element['link'][0]? element['link'][0].attributes.href : element['link'].attributes.href }}"
                                class="btn btn-info" role="button">Buy</a>
-                           <b>{{element['im:price'].label}}</b>
+                           <b>{{(element['im:price'].label === 'Get')? '':element['im:price'].label}}</b>
 
                         </p>
                     </div>
@@ -82,7 +86,7 @@
 
                         <p>
                             <tooltip-content #myTooltip>
-                                {{element.longDescription}}
+                                {{unescapeHtml(element.longDescription)}}
 
                             </tooltip-content>
 
@@ -92,7 +96,7 @@
 
                             <a target="_blank" href="{{element.productUrl }}" class="btn btn-info"
                                role="button">Buy</a>
-                            <b>{{element.salePrice == undefined ?'':element.salePrice}}</b>
+                            <b>${{element.salePrice == undefined ?'':element.salePrice}}</b>
                         </p>
                     </div>
                 </div>
@@ -154,6 +158,34 @@
                             <a target="_blank" href="{{element.url}}" class="btn btn-info"
                                role="button">Buy</a>
                             <b>${{element.salePrice}}</b>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="rakutenlisting != undefined && rakutenlisting.results.products.product.length > 0" class="row is-flex" id="1e">
+            <div *ngFor="let element of generateArray(rakutenlisting.results.products.product)" class="col-sm-6 col-md-4 col-lg-3">
+                <div class="thumbnail equalize same-height">
+                    <a target="_blank" href="http://www.rakuten.com/sr/searchresults#qu={{element.name}}">
+                        <img class="img-thumbnail" [hidden]="!element.image_url_large"
+                             src="{{element.image_url_large}}" alt=""/>
+                    </a>
+                    <div class="caption">
+                        <h6 class="media-heading"><b>{{element.name}}</b></h6>
+
+                        <p>
+                            <tooltip-content #myTooltip>
+                                {{element.description}}
+
+                            </tooltip-content>
+
+                            <button [tooltip]="myTooltip" tooltipAnimation="true" tooltipPlacement="left"
+                                    class="btn btn-info" role="button">Details
+                            </button>
+
+                            <a target="_blank" href="" class="btn btn-info"
+                               role="button">Buy</a>
+                            <b>${{element.price_min}}</b>
                         </p>
                     </div>
                 </div>

@@ -15,7 +15,7 @@ var AppComponent = (function () {
         this.subtitle = '(v1)';
     }
     AppComponent.prototype.ngAfterViewInit = function () {
-        console.log('Inside appcomponent ngAfterViewInit');
+        //console.log('Inside appcomponent ngAfterViewInit');
         var $nav = $('.greedy-nav');
         var $btn = $('.greedy-nav button');
         var $vlinks = $('.greedy-nav .visible-links');

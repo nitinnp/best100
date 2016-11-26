@@ -19,7 +19,7 @@ export class ListingService {
     constructor(private http: Http, private jsonp: Jsonp){}
 
     getListing(type:string) {
-        console.log('Inside get listing..');
+        //console.log('Inside get listing..');
         let params: URLSearchParams = new URLSearchParams();
         let urlPathArry = type.split("-");
         params.set('searchIndex',urlPathArry[1] );
@@ -30,6 +30,11 @@ export class ListingService {
         }
         if(type.startsWith("bestbuy")) {
             return this.http.get('/bestbuylisting',{
+                search: params
+            }).map(this.extractData).catch(this.handleError);
+        }
+        if(type.startsWith("rakuten")) {
+            return this.http.get('/rakutenlisting',{
                 search: params
             }).map(this.extractData).catch(this.handleError);
         }

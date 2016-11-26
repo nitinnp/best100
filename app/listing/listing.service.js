@@ -19,7 +19,7 @@ var ListingService = (function () {
         this.jsonp = jsonp;
     }
     ListingService.prototype.getListing = function (type) {
-        console.log('Inside get listing..');
+        //console.log('Inside get listing..');
         var params = new http_1.URLSearchParams();
         var urlPathArry = type.split("-");
         params.set('searchIndex', urlPathArry[1]);
@@ -30,6 +30,11 @@ var ListingService = (function () {
         }
         if (type.startsWith("bestbuy")) {
             return this.http.get('/bestbuylisting', {
+                search: params
+            }).map(this.extractData).catch(this.handleError);
+        }
+        if (type.startsWith("rakuten")) {
+            return this.http.get('/rakutenlisting', {
                 search: params
             }).map(this.extractData).catch(this.handleError);
         }

@@ -45,7 +45,7 @@ export class AppComponent {
 
 
     ngAfterViewInit() {
-            console.log('Inside appcomponent ngAfterViewInit');
+            //console.log('Inside appcomponent ngAfterViewInit');
 
             var $nav = $('.greedy-nav');
             var $btn = $('.greedy-nav button');

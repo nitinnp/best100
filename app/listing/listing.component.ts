@@ -22,6 +22,7 @@ export class ListingComponent implements OnInit,AfterViewInit,AfterViewChecked{
     ituneslisting:{};
     bestbuylisting:{};
     walmartlisting:{};
+    rakutenlisting:{};
     today:any;
     type:any;
     constructor(
@@ -44,8 +45,16 @@ export class ListingComponent implements OnInit,AfterViewInit,AfterViewChecked{
         this.getListing();
 
     }
+    unescapeHtml(safe) {
+        return safe.replace(/&amp;/g, '&')
+            .replace(/&lt;/g, '<')
+            .replace(/&gt;/g, '>')
+            .replace(/&quot;/g, '"')
+            .replace(/&#039;/g, "'");
+    }
+
     onSelect(affiliateType:any): void {
-        console.debug(affiliateType);
+       // console.debug(affiliateType);
         if(this.type.indexOf("-") > 0) {
             let pathArry = this.type.split("-");
             this.type = pathArry[1];
@@ -65,18 +74,19 @@ export class ListingComponent implements OnInit,AfterViewInit,AfterViewChecked{
         this.route.params.forEach((params: Params) => {
             this.type = params['id'];
 
-            console.debug(this.type);
+            //console.debug(this.type);
             if(this.type === undefined){
                 this.type = "Movies";
             }
             this.ListingService.getListing(this.type).subscribe(
                 data => {
-                    console.log(data);
+                  //  console.log(data);
                     if(this.type.startsWith("amz")) {
                         this.ituneslisting= undefined;
                         this.bestbuylisting= undefined;
                         this.amazonlisting = data;
                         this.walmartlisting = undefined;
+                        this.rakutenlisting = undefined;
 
                     }
                     else if(this.type.startsWith("itunes")){
@@ -84,18 +94,28 @@ export class ListingComponent implements OnInit,AfterViewInit,AfterViewChecked{
                         this.amazonlisting = undefined;
                         this.bestbuylisting= undefined;
                         this.walmartlisting = undefined;
+                        this.rakutenlisting = undefined;
                     }
                     else if(this.type.startsWith("walmart")){
                         this.ituneslisting= undefined;
                         this.amazonlisting = undefined;
                         this.bestbuylisting= undefined;
+                        this.rakutenlisting = undefined;
                         this.walmartlisting = data;
+                    }
+                    else if(this.type.startsWith("rakuten")){
+                        this.ituneslisting= undefined;
+                        this.amazonlisting = undefined;
+                        this.bestbuylisting= undefined;
+                        this.walmartlisting = undefined;
+                        this.rakutenlisting = data;
                     }
                     else{
                         this.bestbuylisting= data;
                         this.ituneslisting= undefined;
                         this.amazonlisting = undefined;
                         this.walmartlisting = undefined;
+                        this.rakutenlisting = undefined;
                     }
 
                 }, error =>{console.log("error in service")});

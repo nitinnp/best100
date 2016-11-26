@@ -36,6 +36,7 @@ app.use('/amazonlisting', routes);
 app.use('/ituneslisting', routes);
 app.use('/bestbuylisting', routes);
 app.use('/walmartlisting', routes);
+app.use('/rakutenlisting', routes);
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   var err;

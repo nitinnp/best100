@@ -31,8 +31,15 @@ var ListingComponent = (function () {
     ListingComponent.prototype.ngOnInit = function () {
         this.getListing();
     };
+    ListingComponent.prototype.unescapeHtml = function (safe) {
+        return safe.replace(/&amp;/g, '&')
+            .replace(/&lt;/g, '<')
+            .replace(/&gt;/g, '>')
+            .replace(/&quot;/g, '"')
+            .replace(/&#039;/g, "'");
+    };
     ListingComponent.prototype.onSelect = function (affiliateType) {
-        console.debug(affiliateType);
+        // console.debug(affiliateType);
         if (this.type.indexOf("-") > 0) {
             var pathArry = this.type.split("-");
             this.type = pathArry[1];
@@ -47,35 +54,46 @@ var ListingComponent = (function () {
         var _this = this;
         this.route.params.forEach(function (params) {
             _this.type = params['id'];
-            console.debug(_this.type);
+            //console.debug(this.type);
             if (_this.type === undefined) {
                 _this.type = "Movies";
             }
             _this.ListingService.getListing(_this.type).subscribe(function (data) {
-                console.log(data);
+                //  console.log(data);
                 if (_this.type.startsWith("amz")) {
                     _this.ituneslisting = undefined;
                     _this.bestbuylisting = undefined;
                     _this.amazonlisting = data;
                     _this.walmartlisting = undefined;
+                    _this.rakutenlisting = undefined;
                 }
                 else if (_this.type.startsWith("itunes")) {
                     _this.ituneslisting = data;
                     _this.amazonlisting = undefined;
                     _this.bestbuylisting = undefined;
                     _this.walmartlisting = undefined;
+                    _this.rakutenlisting = undefined;
                 }
                 else if (_this.type.startsWith("walmart")) {
                     _this.ituneslisting = undefined;
                     _this.amazonlisting = undefined;
                     _this.bestbuylisting = undefined;
+                    _this.rakutenlisting = undefined;
                     _this.walmartlisting = data;
+                }
+                else if (_this.type.startsWith("rakuten")) {
+                    _this.ituneslisting = undefined;
+                    _this.amazonlisting = undefined;
+                    _this.bestbuylisting = undefined;
+                    _this.walmartlisting = undefined;
+                    _this.rakutenlisting = data;
                 }
                 else {
                     _this.bestbuylisting = data;
                     _this.ituneslisting = undefined;
                     _this.amazonlisting = undefined;
                     _this.walmartlisting = undefined;
+                    _this.rakutenlisting = undefined;
                 }
             }, function (error) { console.log("error in service"); });
         });
