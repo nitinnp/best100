@@ -18,6 +18,7 @@ var ListingComponent = (function () {
         this.router = router;
         this.route = route;
         this.ListingService = ListingService;
+        console.log('Inside listing constructor');
         this.today = new Date();
     }
     ;
@@ -29,6 +30,7 @@ var ListingComponent = (function () {
         }
     };
     ListingComponent.prototype.ngOnInit = function () {
+        console.log('Inside listing ngonInit');
         this.getListing();
     };
     ListingComponent.prototype.unescapeHtml = function (safe) {

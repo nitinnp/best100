@@ -37,6 +37,11 @@ app.use('/ituneslisting', routes);
 app.use('/bestbuylisting', routes);
 app.use('/walmartlisting', routes);
 app.use('/rakutenlisting', routes);
+
+app.get('*', function(req, res, next) {
+  res.sendfile("public/index.html");
+});
+
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   var err;

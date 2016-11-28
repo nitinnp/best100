@@ -14,6 +14,9 @@ var AppComponent = (function () {
         this.title = 'My App';
         this.subtitle = '(v1)';
     }
+    AppComponent.prototype.ngOnInit = function () {
+        console.log('Inside app component ngonInit');
+    };
     AppComponent.prototype.ngAfterViewInit = function () {
         //console.log('Inside appcomponent ngAfterViewInit');
         var $nav = $('.greedy-nav');

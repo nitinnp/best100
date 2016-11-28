@@ -28,7 +28,7 @@ export class ListingComponent implements OnInit,AfterViewInit,AfterViewChecked{
     constructor(
         private router:Router,private route: ActivatedRoute,
         private ListingService: ListingService) {
-
+        console.log('Inside listing constructor');
         this.today = new Date();
     };
 
@@ -42,7 +42,9 @@ export class ListingComponent implements OnInit,AfterViewInit,AfterViewChecked{
     }
 
     ngOnInit(): void {
+        console.log('Inside listing ngonInit');
         this.getListing();
+
 
     }
     unescapeHtml(safe) {

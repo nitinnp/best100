@@ -43,6 +43,12 @@ export class AppComponent {
     subtitle = '(v1)';
 
 
+    ngOnInit(): void {
+        console.log('Inside app component ngonInit');
+
+
+
+    }
 
     ngAfterViewInit() {
             //console.log('Inside appcomponent ngAfterViewInit');
