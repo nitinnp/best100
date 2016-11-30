@@ -4,7 +4,30 @@ declare var jQuery:JQueryStatic;
     moduleId: module.id,
     selector: 'my-app',
     template: `
- 
+ <div class="row" style="background: #FFFFFF">
+
+        <div class="col-md-6">
+          <a class="navbar-brand" href="http://www.meosys.com"><img src="./assets/images/logo.bmp" alt="Meosys" width="325" height="82"/>
+             </a>
+        </div>
+        <div class="col-md-6">
+            <ul class="social nav navbar-nav navbar-right">
+                <li>
+                    <a href="https://www.facebook.com/BestRatedProductsByMeosys" target="_blank">
+                        <i class="fa fa-lg fa-facebook"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="http://twitter.com/" target="_blank">
+                        <i class="fa fa-lg fa-twitter"></i>
+                    </a>
+                </li>
+                <li><a href="http://googleplus.com/" target="_blank"><i class="fa fa-lg fa-google-plus"></i></a></li>
+
+            </ul>
+        </div>
+
+ </div>
   
  <div class="top-bar-container" data-sticky-container>
     <div class="sticky" data-sticky data-options="anchor: page; marginTop: 0; stickyOn: small;">

@@ -10,7 +10,14 @@ body {
 	background: #F2F2F2 !important;
 	font-family: 'Open Sans', sans-serif;;
 }
-
+.navbar-brand {
+	padding: 5px;
+}
+.navbar-brand>img {
+	margin-top: -22px;
+	padding: 15px;
+	width: auto;
+}
 .social {
 	margin: 0;
 	padding: 0;

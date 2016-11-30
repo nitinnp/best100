@@ -18,7 +18,7 @@ var ListingComponent = (function () {
         this.router = router;
         this.route = route;
         this.ListingService = ListingService;
-        console.log('Inside listing constructor');
+        console.log('Inside listing ngonInit');
         this.today = new Date();
     }
     ;
@@ -34,11 +34,12 @@ var ListingComponent = (function () {
         this.getListing();
     };
     ListingComponent.prototype.unescapeHtml = function (safe) {
-        return safe.replace(/&amp;/g, '&')
+        var safe = safe.replace(/&amp;/g, '&')
             .replace(/&lt;/g, '<')
             .replace(/&gt;/g, '>')
             .replace(/&quot;/g, '"')
             .replace(/&#039;/g, "'");
+        return $(safe).text();
     };
     ListingComponent.prototype.onSelect = function (affiliateType) {
         // console.debug(affiliateType);

@@ -28,7 +28,7 @@ export class ListingComponent implements OnInit,AfterViewInit,AfterViewChecked{
     constructor(
         private router:Router,private route: ActivatedRoute,
         private ListingService: ListingService) {
-        console.log('Inside listing constructor');
+        console.log('Inside listing ngonInit');
         this.today = new Date();
     };
 
@@ -36,6 +36,7 @@ export class ListingComponent implements OnInit,AfterViewInit,AfterViewChecked{
     generateArray(obj){
         if(obj!== undefined) {
             return Object.keys(obj).map((key)=> {
+
                 return obj[key]
             });
         }
@@ -48,11 +49,15 @@ export class ListingComponent implements OnInit,AfterViewInit,AfterViewChecked{
 
     }
     unescapeHtml(safe) {
-        return safe.replace(/&amp;/g, '&')
+
+
+        var safe = safe.replace(/&amp;/g, '&')
             .replace(/&lt;/g, '<')
             .replace(/&gt;/g, '>')
             .replace(/&quot;/g, '"')
             .replace(/&#039;/g, "'");
+
+        return $(safe).text();
     }
 
     onSelect(affiliateType:any): void {

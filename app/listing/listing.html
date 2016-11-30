@@ -28,20 +28,7 @@
                 <a  href="#1c" data-toggle="tab">Rakuten</a>
             </li-->
         </ul>
-        <ul class="social nav navbar-nav navbar-right">
-            <li>
-                <a href="https://www.facebook.com/BestRatedProductsByMeosys" target="_blank">
-                    <i class="fa fa-lg fa-facebook"></i>
-                </a>
-            </li>
-            <li>
-                <a href="http://twitter.com/" target="_blank">
-                    <i class="fa fa-lg fa-twitter"></i>
-                </a>
-            </li>
-            <li><a href="http://googleplus.com/" target="_blank"><i class="fa fa-lg fa-google-plus"></i></a></li>
 
-        </ul>
         <div *ngIf="ituneslisting?.feed !== undefined " class="row is-flex" id="1b">
             <div *ngFor="let element of generateArray(ituneslisting.feed.entry)"
                  class="col-sm-6 col-md-4 col-lg-3">
@@ -73,10 +60,9 @@
 
             </div>
         </div>
-        <div *ngIf="walmartlisting != undefined && walmartlisting.items.length > 0" class="row is-flex" id="1d">
-            <div *ngFor="let element of generateArray(walmartlisting.items)" class="col-sm-6 col-md-4 col-lg-3">
+        <div *ngIf="walmartlisting != undefined && walmartlisting.items.length > 0;" class="row is-flex" id="1d">
+            <div *ngFor="let element of generateArray(walmartlisting.items);let i=index" class="col-sm-6 col-md-4 col-lg-3">
                 <div class="thumbnail">
-
                     <a target="_blank" href="{{element.productUrl }}" class="thumbnail-parent-fix">
                         <img class="img-thumbnail" [hidden]="!element.mediumImage"
                              src="{{element.mediumImage}}" alt=""/>
@@ -85,8 +71,8 @@
                         <h6 class="media-heading">{{element.name}}</h6>
 
                         <p>
-                            <tooltip-content #myTooltip>
-                                {{unescapeHtml(element.longDescription)}}
+                            <tooltip-content #myTooltip id="{{index}}">
+                               {{unescapeHtml(element.longDescription)}}
 
                             </tooltip-content>
 
