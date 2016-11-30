@@ -24,7 +24,7 @@ var WikipediaService = (function () {
         // TODO: Add error handling
         return this.jsonp
             .get(wikiUrl, { search: params })
-            .map(function (response) { return response.json()[2]; });
+            .map(function (response) { return response.json()[1]; });
     };
     WikipediaService = __decorate([
         core_1.Injectable(), 

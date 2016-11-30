@@ -13,6 +13,7 @@ var listing_component_1 = require('./listing.component');
 var shared_module_1 = require("../shared/shared.module");
 var listing_routing_module_1 = require("./listing-routing.module");
 var ng2_tooltip_1 = require("ng2-tooltip");
+var wikipedia_component_1 = require("../wiki/wikipedia.component");
 var ListingModule = (function () {
     function ListingModule() {
     }
@@ -20,7 +21,7 @@ var ListingModule = (function () {
         core_1.NgModule({
             imports: [shared_module_1.SharedModule, listing_routing_module_1.ListingRoutingModule, ng2_tooltip_1.TooltipModule],
             declarations: [
-                listing_component_1.ListingComponent
+                listing_component_1.ListingComponent, wikipedia_component_1.WikiComponent
             ],
             exports: [listing_component_1.ListingComponent]
         }), 

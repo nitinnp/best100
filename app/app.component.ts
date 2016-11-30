@@ -31,7 +31,7 @@ declare var jQuery:JQueryStatic;
      </nav>    
    </div>
  </div>
- 
+
     <router-outlet></router-outlet>
 
   <!--/div--> 

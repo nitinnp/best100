@@ -1,12 +1,12 @@
 <div class="container" id="portfolio">
     <div id="exTab3" class="container">
 
-        <ul class="nav nav-pills navbar-left" >
+        <ul class="nav nav-tabs nav-justified" >
             <li  (click)="onSelect('amz')" class="{{type.indexOf('amz')==0? 'active':''}}" >
-                <a  href="#1a" data-toggle="tab">Amazon</a>
+                <a  href="#1a" data-toggle="tab"><img src="./assets/images/logo_amazon.png"/>  </a>
             </li>
             <li *ngIf= "(!(type.indexOf('Apps') > 0))"  (click)="onSelect('walmart')" class="{{type.indexOf('walmart')==0? 'active':''}}" >
-                <a  href="#1d" data-toggle="tab">Walmart</a>
+                <a  href="#1d" data-toggle="tab"><img src="./assets/images/walmart.png"/></a>
             </li>
 
             <li *ngIf= "((type.indexOf('Apps') > 0)|| (type.indexOf('Movies') > 0)
@@ -14,15 +14,15 @@
             (type.indexOf('TV Episodes') > 0 ) || (type.indexOf('Audio Books') > 0))"
                 (click)="onSelect('itunes')" class="{{type.indexOf('itunes')==0? 'active':''}}">
 
-                <a  href="#1b" data-toggle="tab">Itunes Store</a>
+                <a  href="#1b" data-toggle="tab"> <img src="./assets/images/logo_itunes.png"/> </a>
             </li>
             <li *ngIf= "((type.indexOf('Laptops') > 0)|| (type.indexOf('Desktop') > 0)
             || (type.indexOf('Cell Phones') > 0) || (type.indexOf('Televisions') > 0 ) ||
             (type.indexOf('Camera') > 0 ) )" (click)="onSelect('bestbuy')" class="{{type.indexOf('bestbuy')==0? 'active':''}}" >
-                <a  href="#1c" data-toggle="tab">Best Buy</a>
+                <a  href="#1c" data-toggle="tab"><img src="./assets/images/logo_bestbuy.png"/></a>
             </li>
             <li *ngIf= "(!(type.indexOf('Apps') > 0))"  (click)="onSelect('rakuten')" class="{{type.indexOf('rakuten')==0? 'active':''}}" >
-                <a  href="#1e" data-toggle="tab">Rakuten</a>
+                <a  href="#1e" data-toggle="tab"><img src="./assets/images/logo_rakuten.png"/></a>
             </li>
             <!--li (click)="onSelect('rakuten')">
                 <a  href="#1c" data-toggle="tab">Rakuten</a>
@@ -47,12 +47,12 @@
                  class="col-sm-6 col-md-4 col-lg-3">
                 <div class="thumbnail equalize same-height">
                     <a target="_blank"
-                       href="{{element['link'][0]? element['link'][0].attributes.href : element['link'].attributes.href }}">
-                        <img class="img-thumbnail img-responsive" [hidden]="!element['im:image'][2]"
+                       href="{{element['link'][0]? element['link'][0].attributes.href : element['link'].attributes.href }}" class="thumbnail-parent-fix">
+                        <img class="img-thumbnail" [hidden]="!element['im:image'][2]"
                              src="{{element['im:image'][2].label}}" alt=""/>
                     </a>
                     <div class="caption">
-                        <h6 class="media-heading"><b>{{element['title'].label}}</b></h6>
+                        <h6 class="media-heading">{{element['title'].label}}</h6>
 
                         <p>
                             <tooltip-content #myTooltip>
@@ -60,12 +60,12 @@
                             </tooltip-content>
 
                             <button [tooltip]="myTooltip" tooltipAnimation="true" tooltipPlacement="left"
-                                    class="btn btn-info" role="button">Details
+                                    class="btn btn-default" role="button">Details
                             </button>
                             <a target="_blank"
                                href="{{element['link'][0]? element['link'][0].attributes.href : element['link'].attributes.href }}"
                                class="btn btn-info" role="button">Buy</a>
-                           <b>{{(element['im:price'].label === 'Get')? '':element['im:price'].label}}</b>
+                           <span class="item-price">{{(element['im:price'].label === 'Get')? '':element['im:price'].label}}</span>
 
                         </p>
                     </div>
@@ -75,14 +75,14 @@
         </div>
         <div *ngIf="walmartlisting != undefined && walmartlisting.items.length > 0" class="row is-flex" id="1d">
             <div *ngFor="let element of generateArray(walmartlisting.items)" class="col-sm-6 col-md-4 col-lg-3">
-                <div class="thumbnail equalize same-height">
+                <div class="thumbnail">
 
-                    <a target="_blank" href="{{element.productUrl }}">
+                    <a target="_blank" href="{{element.productUrl }}" class="thumbnail-parent-fix">
                         <img class="img-thumbnail" [hidden]="!element.mediumImage"
                              src="{{element.mediumImage}}" alt=""/>
                     </a>
                     <div class="caption">
-                        <h6 class="media-heading"><b>{{element.name}}</b></h6>
+                        <h6 class="media-heading">{{element.name}}</h6>
 
                         <p>
                             <tooltip-content #myTooltip>
@@ -91,12 +91,12 @@
                             </tooltip-content>
 
                             <button [tooltip]="myTooltip" tooltipAnimation="true" tooltipPlacement="left"
-                                    class="btn btn-info" role="button">Details
+                                    class="btn btn-default" role="button">Details
                             </button>
 
                             <a target="_blank" href="{{element.productUrl }}" class="btn btn-info"
                                role="button">Buy</a>
-                            <b>${{element.salePrice == undefined ?'':element.salePrice}}</b>
+                            <span class="item-price">${{element.salePrice == undefined ?'':element.salePrice}}</span>
                         </p>
                     </div>
                 </div>
@@ -104,14 +104,14 @@
         </div>
         <div *ngIf="amazonlisting != undefined && amazonlisting.length > 0" class="row is-flex" id="1a">
             <div *ngFor="let element of generateArray(amazonlisting)" class="col-sm-6 col-md-4 col-lg-3">
-                <div class="thumbnail equalize same-height">
+                <div class="thumbnail">
 
-                    <a target="_blank" href="{{element['DetailPageURL'][0] }}">
+                    <a target="_blank" href="{{element['DetailPageURL'][0] }}" class="thumbnail-parent-fix">
                         <img class="img-thumbnail" [hidden]="!element['MediumImage'][0].URL[0]"
-                             src="{{element['MediumImage'][0].URL}}" alt=""/>
+                             src="{{element['MediumImage'][0].URL}}" alt="" />
                     </a>
                     <div class="caption">
-                        <h6 class="media-heading"><b>{{element['ItemAttributes'][0].Title[0]}}</b></h6>
+                        <h6 class="media-heading">{{element['ItemAttributes'][0].Title[0]}}</h6>
 
                         <p>
                             <tooltip-content #myTooltip>
@@ -122,12 +122,12 @@
                             </tooltip-content>
 
                             <button [tooltip]="myTooltip" tooltipAnimation="true" tooltipPlacement="left"
-                                    class="btn btn-info" role="button">Details
+                                    class="btn btn-default" role="link">Details
                             </button>
 
                             <a target="_blank" href="{{element['DetailPageURL'][0] }}" class="btn btn-info"
                                role="button">Buy</a>
-                            <b>{{element['ItemAttributes'][0].ListPrice == undefined ?'':element['ItemAttributes'][0].ListPrice[0].FormattedPrice}}</b>
+                            <span class="item-price">{{element['ItemAttributes'][0].ListPrice == undefined ?'':element['ItemAttributes'][0].ListPrice[0].FormattedPrice}}</span>
                         </p>
                     </div>
                 </div>
@@ -135,13 +135,13 @@
         </div>
         <div *ngIf="bestbuylisting != undefined && bestbuylisting.products.length > 0" class="row is-flex" id="1c">
             <div *ngFor="let element of generateArray(bestbuylisting.products)" class="col-sm-6 col-md-4 col-lg-3">
-                <div class="thumbnail equalize same-height">
-                    <a target="_blank" href="{{element.url }}">
+                <div class="thumbnail">
+                    <a target="_blank" href="{{element.url }}" class="thumbnail-parent-fix">
                         <img class="img-thumbnail" [hidden]="!element.thumbnailImage"
                              src="{{element.thumbnailImage}}" alt=""/>
                     </a>
                     <div class="caption">
-                        <h6 class="media-heading"><b>{{element.name}}</b></h6>
+                        <h6 class="media-heading">{{element.name}}</h6>
 
                         <p>
                             <tooltip-content #myTooltip>
@@ -152,12 +152,12 @@
                             </tooltip-content>
 
                             <button [tooltip]="myTooltip" tooltipAnimation="true" tooltipPlacement="left"
-                                    class="btn btn-info" role="button">Details
+                                    class="btn btn-default" role="button">Details
                             </button>
 
                             <a target="_blank" href="{{element.url}}" class="btn btn-info"
                                role="button">Buy</a>
-                            <b>${{element.salePrice}}</b>
+                           <span class="item-price">${{element.salePrice}}</span>
                         </p>
                     </div>
                 </div>
@@ -165,13 +165,13 @@
         </div>
         <div *ngIf="rakutenlisting != undefined && rakutenlisting.results.products.product.length > 0" class="row is-flex" id="1e">
             <div *ngFor="let element of generateArray(rakutenlisting.results.products.product)" class="col-sm-6 col-md-4 col-lg-3">
-                <div class="thumbnail equalize same-height">
-                    <a target="_blank" href="http://www.rakuten.com/sr/searchresults#qu={{element.name}}">
+                <div class="thumbnail">
+                    <a target="_blank" href="http://www.rakuten.com/sr/searchresults#qu={{element.name}}" class="thumbnail-parent-fix">
                         <img class="img-thumbnail" [hidden]="!element.image_url_large"
                              src="{{element.image_url_large}}" alt=""/>
                     </a>
                     <div class="caption">
-                        <h6 class="media-heading"><b>{{element.name}}</b></h6>
+                        <h6 class="media-heading">{{element.name}}</h6>
 
                         <p>
                             <tooltip-content #myTooltip>
@@ -180,12 +180,12 @@
                             </tooltip-content>
 
                             <button [tooltip]="myTooltip" tooltipAnimation="true" tooltipPlacement="left"
-                                    class="btn btn-info" role="button">Details
+                                    class="btn btn-default" role="button">Details
                             </button>
 
                             <a target="_blank" href="" class="btn btn-info"
                                role="button">Buy</a>
-                            <b>${{element.price_min}}</b>
+                            <span class="item-price">${{element.price_min}}</span>
                         </p>
                     </div>
                 </div>

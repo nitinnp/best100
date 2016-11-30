@@ -6,12 +6,15 @@ import { Subject }          from 'rxjs/Subject';
 @Component({
     selector: 'my-wiki',
     template: `
-    <h1>Wiki</h1>
-    <p><i>Fetches after each keystroke</i></p>
-    <input #term (keyup)="search(term.value)"/>
-    <ul>
-      <li *ngFor="let item of items | async">{{item}}</li>
+
+<div class="dropdown">
+<input #term (keyup)="search(term.value)" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"/>
+
+    
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+      <li *ngFor="let item of items | async"><a href="#">{{item}}</a></li>
     </ul>
+    </div>
   `,
     providers: [WikipediaService]
 })

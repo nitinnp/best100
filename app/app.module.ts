@@ -26,7 +26,7 @@ import './rxjs-extensions';
         CoreModule.forRoot({userName: 'Mr John'}),
         AppRoutingModule, LoginRoutingModule, PersonModule,ContactModule,ListingModule,
         AppRoutingModule],
-    declarations: [ AppComponent,WikiComponent,LoginComponent],
+    declarations: [ AppComponent,LoginComponent],
     providers:    [ UserService,WikipediaService,ListingService],
     bootstrap:    [ AppComponent ]
 })

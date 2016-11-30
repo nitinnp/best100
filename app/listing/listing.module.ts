@@ -5,11 +5,12 @@ import {SharedModule} from "../shared/shared.module";
 import {CoreModule} from "../core/core.module";
 import {ListingRoutingModule} from "./listing-routing.module";
 import {TooltipModule} from "ng2-tooltip";
+import {WikiComponent} from "../wiki/wikipedia.component";
 
 @NgModule({
-    imports: [ SharedModule, ListingRoutingModule, TooltipModule],
+    imports: [ SharedModule,ListingRoutingModule, TooltipModule],
     declarations: [
-        ListingComponent
+        ListingComponent,WikiComponent
     ],
     exports:      [ ListingComponent ]
 })

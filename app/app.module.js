@@ -21,7 +21,6 @@ var user_service_1 = require("./services/user.service");
 var contact_module_1 = require("./contact/contact.module");
 var core_module_1 = require("./core/core.module");
 var wikipedia_service_1 = require("./wiki/wikipedia.service");
-var wikipedia_component_1 = require("./wiki/wikipedia.component");
 var login_routing_module_1 = require("./login/login-routing.module");
 var login_component_1 = require("./login/login.component");
 var listing_module_1 = require("./listing/listing.module");
@@ -36,7 +35,7 @@ var AppModule = (function () {
                 core_module_1.CoreModule.forRoot({ userName: 'Mr John' }),
                 app_routing_module_1.AppRoutingModule, login_routing_module_1.LoginRoutingModule, person_module_1.PersonModule, contact_module_1.ContactModule, listing_module_1.ListingModule,
                 app_routing_module_1.AppRoutingModule],
-            declarations: [app_component_1.AppComponent, wikipedia_component_1.WikiComponent, login_component_1.LoginComponent],
+            declarations: [app_component_1.AppComponent, login_component_1.LoginComponent],
             providers: [user_service_1.UserService, wikipedia_service_1.WikipediaService, listing_service_1.ListingService],
             bootstrap: [app_component_1.AppComponent]
         }), 

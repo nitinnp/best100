@@ -13,6 +13,6 @@ export class WikipediaService {
         // TODO: Add error handling
         return this.jsonp
             .get(wikiUrl, { search: params })
-            .map(response => <string[]> response.json()[2]);
+            .map(response => <string[]> response.json()[1]);
     }
 }

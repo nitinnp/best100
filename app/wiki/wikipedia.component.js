@@ -27,7 +27,7 @@ var WikiComponent = (function () {
     WikiComponent = __decorate([
         core_1.Component({
             selector: 'my-wiki',
-            template: "\n    <h1>Wiki</h1>\n    <p><i>Fetches after each keystroke</i></p>\n    <input #term (keyup)=\"search(term.value)\"/>\n    <ul>\n      <li *ngFor=\"let item of items | async\">{{item}}</li>\n    </ul>\n  ",
+            template: "\n\n<div class=\"dropdown\">\n<input #term (keyup)=\"search(term.value)\" id=\"dropdownMenu1\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"true\"/>\n\n    \n    <ul class=\"dropdown-menu\" aria-labelledby=\"dropdownMenu1\">\n      <li *ngFor=\"let item of items | async\"><a href=\"#\">{{item}}</a></li>\n    </ul>\n    </div>\n  ",
             providers: [wikipedia_service_1.WikipediaService]
         }), 
         __metadata('design:paramtypes', [wikipedia_service_1.WikipediaService])
