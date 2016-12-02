@@ -26,12 +26,13 @@ var login_component_1 = require("./login/login.component");
 var listing_module_1 = require("./listing/listing.module");
 var listing_service_1 = require("./listing/listing.service");
 require('./rxjs-extensions');
+var angular2_infinite_scroll_1 = require("angular2-infinite-scroll");
 var AppModule = (function () {
     function AppModule() {
     }
     AppModule = __decorate([
         core_1.NgModule({
-            imports: [platform_browser_1.BrowserModule, forms_1.FormsModule, http_1.HttpModule, http_1.JsonpModule,
+            imports: [platform_browser_1.BrowserModule, forms_1.FormsModule, http_1.HttpModule, http_1.JsonpModule, angular2_infinite_scroll_1.InfiniteScrollModule,
                 core_module_1.CoreModule.forRoot({ userName: 'Mr John' }),
                 app_routing_module_1.AppRoutingModule, login_routing_module_1.LoginRoutingModule, person_module_1.PersonModule, contact_module_1.ContactModule, listing_module_1.ListingModule,
                 app_routing_module_1.AppRoutingModule],

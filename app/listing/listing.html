@@ -60,7 +60,7 @@
 
             </div>
         </div>
-        <div *ngIf="walmartlisting != undefined && walmartlisting.items.length > 0;" class="row is-flex" id="1d">
+        <div *ngIf="walmartlisting != undefined && walmartlisting.items != undefined && walmartlisting.items.length > 0;" class="row is-flex" id="1d">
             <div *ngFor="let element of generateArray(walmartlisting.items);let i=index" class="col-sm-6 col-md-4 col-lg-3">
                 <div class="thumbnail">
                     <a target="_blank" href="{{element.productUrl }}" class="thumbnail-parent-fix">
@@ -89,6 +89,13 @@
             </div>
         </div>
         <div *ngIf="amazonlisting != undefined && amazonlisting.length > 0" class="row is-flex" id="1a">
+
+            <div class="search-results"
+                 infinite-scroll
+                 [infiniteScrollDistance]="2"
+                 [infiniteScrollThrottle]="500"
+                 (scrolled)="onScroll()">
+            </div>
             <div *ngFor="let element of generateArray(amazonlisting)" class="col-sm-6 col-md-4 col-lg-3">
                 <div class="thumbnail">
 
@@ -169,7 +176,7 @@
                                     class="btn btn-default" role="button">Details
                             </button>
 
-                            <a target="_blank" href="" class="btn btn-info"
+                            <a target="_blank" href="http://www.rakuten.com/sr/searchresults#qu={{element.name}}" class="btn btn-info"
                                role="button">Buy</a>
                             <span class="item-price">${{element.price_min}}</span>
                         </p>

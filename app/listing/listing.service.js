@@ -18,11 +18,12 @@ var ListingService = (function () {
         this.http = http;
         this.jsonp = jsonp;
     }
-    ListingService.prototype.getListing = function (type) {
+    ListingService.prototype.getListing = function (type, page) {
         //console.log('Inside get listing..');
         var params = new http_1.URLSearchParams();
         var urlPathArry = type.split("-");
         params.set('searchIndex', urlPathArry[1]);
+        params.set('page', page);
         if (type.startsWith("itunes")) {
             return this.http.get('/ituneslisting', {
                 search: params

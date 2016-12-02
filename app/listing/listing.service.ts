@@ -18,11 +18,12 @@ export class ListingService {
 
     constructor(private http: Http, private jsonp: Jsonp){}
 
-    getListing(type:string) {
+    getListing(type:string,page:string) {
         //console.log('Inside get listing..');
         let params: URLSearchParams = new URLSearchParams();
         let urlPathArry = type.split("-");
         params.set('searchIndex',urlPathArry[1] );
+        params.set('page',page);
         if(type.startsWith("itunes")) {
              return this.http.get('/ituneslisting',{
                 search: params

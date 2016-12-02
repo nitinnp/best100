@@ -10,16 +10,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var listing_component_1 = require('./listing.component');
+var platform_browser_1 = require('@angular/platform-browser');
 var shared_module_1 = require("../shared/shared.module");
 var listing_routing_module_1 = require("./listing-routing.module");
 var ng2_tooltip_1 = require("ng2-tooltip");
 var wikipedia_component_1 = require("../wiki/wikipedia.component");
+var angular2_infinite_scroll_1 = require("angular2-infinite-scroll");
 var ListingModule = (function () {
     function ListingModule() {
     }
     ListingModule = __decorate([
         core_1.NgModule({
-            imports: [shared_module_1.SharedModule, listing_routing_module_1.ListingRoutingModule, ng2_tooltip_1.TooltipModule],
+            imports: [platform_browser_1.BrowserModule, shared_module_1.SharedModule, listing_routing_module_1.ListingRoutingModule, ng2_tooltip_1.TooltipModule, angular2_infinite_scroll_1.InfiniteScrollModule],
             declarations: [
                 listing_component_1.ListingComponent, wikipedia_component_1.WikiComponent
             ],

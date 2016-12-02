@@ -18,7 +18,9 @@ var ListingComponent = (function () {
         this.router = router;
         this.route = route;
         this.ListingService = ListingService;
-        console.log('Inside listing ngonInit');
+        this.temp = [];
+        this.page = 1;
+        console.log('Inside constructor..');
         this.today = new Date();
     }
     ;
@@ -29,8 +31,18 @@ var ListingComponent = (function () {
             });
         }
     };
+    ListingComponent.prototype.onScroll = function () {
+        //console.log('scrolled!!');
+        var start = this.page;
+        if (this.page < 5) {
+            this.page += 1;
+            this.temp = Object.assign([], this.amazonlisting);
+            // console.log(this.temp);
+            this.getListing();
+        }
+    };
     ListingComponent.prototype.ngOnInit = function () {
-        console.log('Inside listing ngonInit');
+        // console.log('Inside listing ngonInit');
         this.getListing();
     };
     ListingComponent.prototype.unescapeHtml = function (safe) {
@@ -39,10 +51,18 @@ var ListingComponent = (function () {
             .replace(/&gt;/g, '>')
             .replace(/&quot;/g, '"')
             .replace(/&#039;/g, "'");
-        return $(safe).text();
+        try {
+            var txt = $(safe).text();
+            return txt;
+        }
+        catch (e) {
+            return safe;
+        }
     };
     ListingComponent.prototype.onSelect = function (affiliateType) {
-        // console.debug(affiliateType);
+        //console.log(affiliateType);
+        this.temp = [];
+        this.page = 1;
         if (this.type.indexOf("-") > 0) {
             var pathArry = this.type.split("-");
             this.type = pathArry[1];
@@ -55,20 +75,29 @@ var ListingComponent = (function () {
     };
     ListingComponent.prototype.getListing = function () {
         var _this = this;
+        //console.log('getListing');
         this.route.params.forEach(function (params) {
+            if (_this.type != params['id']) {
+                _this.temp = [];
+                _this.page = 1;
+            }
             _this.type = params['id'];
             //console.debug(this.type);
             if (_this.type === undefined) {
                 _this.type = "Movies";
             }
-            _this.ListingService.getListing(_this.type).subscribe(function (data) {
-                //  console.log(data);
+            _this.ListingService.getListing(_this.type, _this.page + "").subscribe(function (data) {
+                //console.log(data);
                 if (_this.type.startsWith("amz")) {
                     _this.ituneslisting = undefined;
                     _this.bestbuylisting = undefined;
                     _this.amazonlisting = data;
                     _this.walmartlisting = undefined;
                     _this.rakutenlisting = undefined;
+                    //console.log(Object.keys(this.temp).length);
+                    if ((Object.keys(_this.temp).length > 0)) {
+                        _this.amazonlisting = _this.temp.concat(_this.amazonlisting);
+                    }
                 }
                 else if (_this.type.startsWith("itunes")) {
                     _this.ituneslisting = data;

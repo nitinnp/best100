@@ -19,10 +19,11 @@ import {LoginComponent} from "./login/login.component";
 import {ListingModule} from "./listing/listing.module";
 import {ListingService} from "./listing/listing.service";
 import './rxjs-extensions';
+import {InfiniteScrollModule} from "angular2-infinite-scroll";
 
 
 @NgModule({
-    imports:      [ BrowserModule, FormsModule, HttpModule, JsonpModule,
+    imports:      [ BrowserModule, FormsModule, HttpModule, JsonpModule,InfiniteScrollModule,
         CoreModule.forRoot({userName: 'Mr John'}),
         AppRoutingModule, LoginRoutingModule, PersonModule,ContactModule,ListingModule,
         AppRoutingModule],

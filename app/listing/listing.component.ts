@@ -23,12 +23,15 @@ export class ListingComponent implements OnInit,AfterViewInit,AfterViewChecked{
     bestbuylisting:{};
     walmartlisting:{};
     rakutenlisting:{};
+    temp = [];
+    page = 1;
     today:any;
     type:any;
     constructor(
+
         private router:Router,private route: ActivatedRoute,
         private ListingService: ListingService) {
-        console.log('Inside listing ngonInit');
+        console.log('Inside constructor..');
         this.today = new Date();
     };
 
@@ -41,27 +44,45 @@ export class ListingComponent implements OnInit,AfterViewInit,AfterViewChecked{
             });
         }
     }
+    onScroll () {
+        //console.log('scrolled!!');
 
+        const start = this.page;
+        if(this.page < 5) {
+            this.page += 1;
+            this.temp = Object.assign([], this.amazonlisting);
+            // console.log(this.temp);
+            this.getListing();
+        }
+
+    }
     ngOnInit(): void {
-        console.log('Inside listing ngonInit');
+       // console.log('Inside listing ngonInit');
         this.getListing();
 
 
     }
     unescapeHtml(safe) {
 
-
         var safe = safe.replace(/&amp;/g, '&')
             .replace(/&lt;/g, '<')
             .replace(/&gt;/g, '>')
             .replace(/&quot;/g, '"')
             .replace(/&#039;/g, "'");
+        try{
+            var txt = $(safe).text();
+            return txt;
+        }catch(e){
+            return safe;
+        }
 
-        return $(safe).text();
     }
 
     onSelect(affiliateType:any): void {
-       // console.debug(affiliateType);
+        //console.log(affiliateType);
+        this.temp = [];
+        this.page = 1;
+
         if(this.type.indexOf("-") > 0) {
             let pathArry = this.type.split("-");
             this.type = pathArry[1];
@@ -77,23 +98,35 @@ export class ListingComponent implements OnInit,AfterViewInit,AfterViewChecked{
     }
 
     getListing(): void {
-
+        //console.log('getListing');
         this.route.params.forEach((params: Params) => {
+            if(this.type != params['id']){
+                this.temp = [];
+                this.page = 1;
+            }
             this.type = params['id'];
 
             //console.debug(this.type);
             if(this.type === undefined){
                 this.type = "Movies";
             }
-            this.ListingService.getListing(this.type).subscribe(
+            this.ListingService.getListing(this.type,this.page+"").subscribe(
                 data => {
-                  //  console.log(data);
+                    //console.log(data);
                     if(this.type.startsWith("amz")) {
                         this.ituneslisting= undefined;
                         this.bestbuylisting= undefined;
                         this.amazonlisting = data;
                         this.walmartlisting = undefined;
                         this.rakutenlisting = undefined;
+
+                        //console.log(Object.keys(this.temp).length);
+                        if((Object.keys(this.temp).length > 0))
+                        {
+                            this.amazonlisting = this.temp.concat(this.amazonlisting);
+                            //console.log(this.amazonlisting);
+                        }
+
 
                     }
                     else if(this.type.startsWith("itunes")){

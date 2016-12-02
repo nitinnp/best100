@@ -168,6 +168,7 @@ router.get('/walmartlisting', function (req, res, next) {
 router.get('/amazonlisting', function (req, res, next) {
         console.log("Inside amazon listing");
         var param = req.param('searchIndex');
+        var pageNo = req.param('page');
         console.log(param);
         var values = amazonMap[param];
         console.log(values);
@@ -175,6 +176,13 @@ router.get('/amazonlisting', function (req, res, next) {
         var searchIndex = paramArry[0];
         var keyword = paramArry[1];
         var sort = paramArry[2];
+        var itemPage = "1";
+
+        if(pageNo != undefined)
+        {
+            itemPage = pageNo;
+        }
+
         if(sort == undefined)
         {
             sort='reviewrank';
@@ -182,7 +190,7 @@ router.get('/amazonlisting', function (req, res, next) {
         console.log(searchIndex);
         console.log(keyword);
         console.log(sort);
-
+        console.log(itemPage);
     var client = amazon.createClient({
         awsId: "AKIAIVW7HT56WCNWXFTA",
         awsSecret: "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",
@@ -193,7 +201,8 @@ router.get('/amazonlisting', function (req, res, next) {
         Keywords: keyword,
         searchIndex: searchIndex,
         responseGroup: 'ItemAttributes,Images',
-        sort: sort
+        sort: sort,
+        ItemPage: itemPage
     }, function (err, results, response) {
         if (err) {
             console.log(err);
@@ -202,7 +211,7 @@ router.get('/amazonlisting', function (req, res, next) {
         } else {
 
             var jsonResponseTxt = JSON.stringify(results);
-            console.log(jsonResponseTxt);
+            //console.log(jsonResponseTxt);
             res.set('Content-Type', 'application/json');
             res.json(JSON.parse(jsonResponseTxt));
         }

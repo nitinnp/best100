@@ -10,7 +10,8 @@
     'angular2-in-memory-web-api': 'lib/angular2-in-memory-web-api',
     'rxjs':                       'lib/rxjs',
     'x2js' : 'lib/x2js/lib/x2js.js',
-    "ng2-tooltip": "lib/ng2-tooltip"
+    "ng2-tooltip": "lib/ng2-tooltip",
+    "angular2-infinite-scroll":"lib/angular2-infinite-scroll/src"
   };
   // packages tells the System loader how to load when no filename and/or no extension
   var packages = {
@@ -18,7 +19,8 @@
     'rxjs':                       { defaultExtension: 'js' },
     "ng2-tooltip": { main: "index.js", defaultExtension: "js" },
      'x2js': { defaultExtension: 'js' },
-    'angular2-in-memory-web-api': { main: 'index.js', defaultExtension: 'js' },
+    'angular2-infinite-scroll': { main: "index.js",defaultExtension: 'js' },
+    'angular2-in-memory-web-api': { main: 'index.js', defaultExtension: 'js' }
   };
   var ngPackageNames = [
     'common',
